@@ -35,7 +35,12 @@
                     'use strict';
                     debugger;
 
-                    // write me! (... without using cloneNode, that's kind of cheating)
+                   // write me! (... without using cloneNode, that's kind of cheating)
+                   // Select the <h1> element inside the "actual" div
+const actualHeading = document.querySelector('#actual h1');
+
+// Change its innerText to match the expected value
+actualHeading.innerText = 'hi!';
                 </script>
             </div>
 

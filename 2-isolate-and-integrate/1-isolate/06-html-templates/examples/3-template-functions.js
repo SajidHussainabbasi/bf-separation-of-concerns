@@ -11,7 +11,7 @@
  * @returns {string} the rendered HTML string
  */
 const renderNavButton = (link, text) => {
-    return `<a href='#${link}'>\n` + `  <button>${text}</button>\n` + `</a>`;
+  return `<a href='#${link}'>\n` + `  <button>${text}</button>\n` + `</a>`;
 };
 const smileButtonString = renderNavButton('top', ':)');
 console.log(smileButtonString);

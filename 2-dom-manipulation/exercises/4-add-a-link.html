@@ -41,6 +41,18 @@
                     debugger;
 
                     // write me! (... without using cloneNode, that's kind of cheating)
+ // Find the target parent element
+    const actual = document.getElementById('actual');
+
+    // Create the anchor element
+    const a = document.createElement('a');
+    a.href = 'https://www.youtube.com/watch?v=0ik6X4DJKCc';
+    a.setAttribute('expected', '_blank');
+    a.innerText = 'Mr. Traversy does it again!';
+
+    // Append the anchor to the actual element
+    actual.appendChild(a);
+
                 </script>
             </div>
 

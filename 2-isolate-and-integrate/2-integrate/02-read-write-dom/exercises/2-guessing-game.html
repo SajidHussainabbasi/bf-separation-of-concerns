@@ -1,70 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>guessing game</title>
+<head>
+    <meta charset="utf-8" />
+    <title>Guessing Game</title>
+    <style>
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
 
-        <style>
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-            }
+        .hidden {
+            color: white;
+        }
 
-            .hidden {
-                color: white;
-            }
+        .visible {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <main id="user-interface" class="centered">
+        <input id="user-input" type="password" />
+        <hr />
+        <code id="output" class="hidden"></code>
+    </main>
 
-            .visible {
-                color: black;
-            }
-        </style>
-    </head>
-
-    <body>
-        <main id="user-interface" class="centered">
-            <input id="user-input" type="password" />
-            <hr />
-            <code id="output" class="hidden"></code>
-        </main>
-
-        <script id="handlers">
-            const setSecretHandler = () => {
-                debugger;
-
-                const inputEl = document.getElementById('_');
-                const newSecret = inputEl.value;
-
-                const outputEl = document.getElementById('_');
-                outputEl._ = newSecret;
-            };
-
-            const displaySecretHandler = () => {
-                debugger;
-
-                const outputEl = document.getElementById('_');
-                outputEl._ = 'visible';
-            };
-
-            const hideSecretHandler = () => {
-                debugger;
-
-                const outputEl = document.getElementById('_');
-                outputEl.className = '_';
-            };
-        </script>
-
-        <script id="listeners">
-            // this is all correct!
-            document
-                .getElementById('user-input')
-                .addEventListener('keyup', setSecretHandler);
+    <script>
+        const setSecretHandler = () => {
+            const inputEl = document.getElementById('user-input');
+            const newSecret = inputEl.value;
 
             const outputEl = document.getElementById('output');
-            outputEl.addEventListener('mouseenter', displaySecretHandler);
-            outputEl.addEventListener('mouseleave', hideSecretHandler);
-        </script>
-    </body>
+            outputEl.textContent = newSecret;
+            outputEl.className = 'hidden';
+        };
+
+        const displaySecretHandler = () => {
+            const outputEl = document.getElementById('output');
+            outputEl.className = 'visible';
+        };
+
+        const hideSecretHandler = () => {
+            const outputEl = document.getElementById('output');
+            outputEl.className = 'hidden';
+        };
+
+        document.getElementById('user-input')
+            .addEventListener('keyup', setSecretHandler);
+
+        const outputEl = document.getElementById('output');
+        outputEl.addEventListener('mouseenter', displaySecretHandler);
+        outputEl.addEventListener('mouseleave', hideSecretHandler);
+    </script>
+</body>
 </html>

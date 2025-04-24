@@ -46,6 +46,13 @@
                     debugger;
 
                     // write me! (... without using cloneNode, that's kind of cheating)
+
+
+const actualListItems = document.querySelectorAll('#actual ul li');
+const expectedListItems = document.querySelectorAll('#expected ul li');
+
+// Update the first list item text
+actualListItems[0].innerText = expectedListItems[0].innerText;
                 </script>
             </div>
 

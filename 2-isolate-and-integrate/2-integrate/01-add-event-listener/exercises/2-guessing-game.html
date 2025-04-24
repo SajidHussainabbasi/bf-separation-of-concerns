@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>guessing game</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>guessing game</title>
 
-        <style>
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-            }
-        </style>
-    </head>
+    <style>
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    </style>
+  </head>
 
-    <body>
-        <main id="user-interface" class="centered">
-            <button id="set">set secret</button> <br />
-            <button id="guess">guess secret</button> <br />
-            <button id="cheat">cheat</button>
-        </main>
+  <body>
+    <main id="user-interface" class="centered">
+      <button id="set">set secret</button> <br />
+      <button id="guess">guess secret</button> <br />
+      <button id="cheat">cheat</button>
+    </main>
 
-        <script id="data">
-            let secret = '';
-        </script>
+    <script id="data">
+      let secret = "";
+    </script>
 
-        <script id="handlers">
-            const setSecretHandler = () => {
-                debugger;
+    <script id="handlers">
+      const setSecretHandler = () => {
+        debugger;
 
-                const newSecret = prompt('_');
-                if (newSecret === null) {
-                    return;
-                }
+        const newSecret = prompt("enter a new secret");
+        if (newSecret === null) {
+          return;
+        }
 
-                secret = newSecret;
+        secret = newSecret;
 
-                alert('_');
-            };
+        alert("your secret is safe with me ;)");
+      };
 
-            const guessSecretHandler = () => {
-                debugger;
+      const guessSecretHandler = () => {
+        debugger;
 
-                const guess = prompt('_');
-                if (guess === null) {
-                    return;
-                }
+        const guess = prompt("guess the secret");
+        if (guess === null) {
+          return;
+        }
 
-                const isCorrect = guess === secret;
+        const isCorrect = guess === secret;
 
-                if (isCorrect) {
-                    alert('_');
-                } else {
-                    alert('_');
-                }
-            };
+        if (isCorrect) {
+          alert("correct!");
+        } else {
+          alert("nope.");
+        }
+      };
 
-            const cheatHandler = () => {
-                debugger;
+      const cheatHandler = () => {
+        debugger;
 
-                const isACheater = confirm('_');
+        const isACheater = confirm("are you sure you want to cheat?");
 
-                if (isACheater) {
-                    alert(`_`);
-                } else {
-                    alert('_');
-                }
-            };
-        </script>
+        if (isACheater) {
+          alert(`the secret is:`+secret);
+        } else {
+          alert("good choice :)");
+        }
+      };
+    </script>
 
-        <script id="listeners">
-            // https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_event_listeners
-            // https://stackoverflow.com/questions/7338193/using-chrome-how-to-find-to-which-events-are-bound-to-an-element
+    <script id="listeners">
+      // https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_event_listeners
+      // https://stackoverflow.com/questions/7338193/using-chrome-how-to-find-to-which-events-are-bound-to-an-element
 
-            _._._(_, _);
-
-            _._._(_, _);
-
-            _._._(_, _);
-        </script>
-    </body>
+      // Add event listeners to the buttons
+      document
+        .getElementById("set")
+        .addEventListener("click", setSecretHandler);
+      document
+        .getElementById("guess")
+        .addEventListener("click", guessSecretHandler);
+      document.getElementById("cheat").addEventListener("click", cheatHandler);
+    </script>
+  </body>
 </html>

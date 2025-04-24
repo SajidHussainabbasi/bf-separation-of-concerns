@@ -1,181 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Keyboard Navigation</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>Keyboard Navigation</title>
 
-        <style>
-            button {
-                height: 8vh;
-                width: 9vw;
-            }
-        </style>
-    </head>
+    <style>
+      button {
+        height: 8vh;
+        width: 9vw;
+      }
+    </style>
+  </head>
 
-    <body>
-        <main id="user-interface">
-            <p>
-                keyboard navigation: use <code>tab</code> and
-                <code>shift+tab</code>
-            </p>
-            <table>
-                <tbody id="the-board">
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                    <tr>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                        <td><button>X</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
+  <body>
+    <main id="user-interface">
+      <p>
+        keyboard navigation: use <code>tab</code> and
+        <code>shift+tab</code>
+      </p>
+      <table>
+        <tbody id="the-board">
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+          <tr>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+            <td><button>X</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
 
-        <script id="handlers">
-            const toggleColorHandler = (event) => {
-                debugger;
+    <script id="handlers">
+      const toggleColorHandler = (event) => {
+        const target = event.target;
+        if (target.nodeName !== "BUTTON") {
+          return;
+        }
 
-                const target = event.target;
-                if (target.nodeName !== '_') {
-                    return;
-                }
+        if (event.type === "focusin") {
+          target.style.backgroundColor = "black";
+          target.style.color = "white";
+        } else if (event.type === "focusout") {
+          target.style.backgroundColor = "white";
+          target.style.color = "black";
+        }
+      };
+    </script>
 
-                if (event.type === '_') {
-                    target.style.backgroundColor = 'black';
-                    target.style.color = 'white';
-                } else if (event.type === '_') {
-                    target.style.backgroundColor = 'white';
-                    target.style.color = 'black';
-                }
-            };
-        </script>
+    <script id="listeners">
+      // this works! no need to change it
+      document
+        .getElementById("the-board")
+        .addEventListener("focusin", toggleColorHandler);
 
-        <script id="listeners">
-            // this works! no need to change it
-            document
-                .getElementById('the-board')
-                .addEventListener('focusin', toggleColorHandler);
+      document
+        .getElementById("the-board")
+        .addEventListener("focusout", toggleColorHandler);
 
-            document
-                .getElementById('the-board')
-                .addEventListener('focusout', toggleColorHandler);
-
-            // trick question: why would 'blur' and 'focus' not work?
-            //  https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
-            //  https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
-        </script>
-    </body>
+      // trick question: why would 'blur' and 'focus' not work?
+      //  https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+      //  https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+    </script>
+  </body>
 </html>
