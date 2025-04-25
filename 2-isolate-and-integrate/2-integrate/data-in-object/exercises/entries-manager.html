@@ -1,164 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Entries Manager</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>Entries Manager</title>
 
-        <style>
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-            }
-        </style>
-    </head>
+    <style>
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    </style>
+  </head>
 
-    <body>
-        <main id="user interface" class="centered">
-            <button id="write">write an entry</button> <br />
-            <button id="delete">delete an entry</button> <br />
-            <button id="search">search in values</button> <br />
-            <button id="find">find by key</button> <br />
-            <br />
-            <button id="display">display all userEntries</button>
-            <br />
-            <button id="reset">reset entries</button>
-        </main>
+  <body>
+    <main id="user interface" class="centered">
+      <button id="write">write an entry</button> <br />
+      <button id="delete">delete an entry</button> <br />
+      <button id="search">search in values</button> <br />
+      <button id="find">find by key</button> <br />
+      <br />
+      <button id="display">display all userEntries</button>
+      <br />
+      <button id="reset">reset entries</button>
+    </main>
 
-        <script id="data">
-            let userEntries = {
-                wood: 'oak',
-                television: 'flat',
-            };
-        </script>
+    <script id="data">
+      let userEntries = {};
+    </script>
 
-        <script id="handlers">
-            'use strict';
+    <script id="handlers">
+      "use strict";
 
-            const displayEntriesHandler = (message = '_', object = _) => {
-                debugger;
-                const starter = message + ':';
-                let stringToDisplay = starter;
-                for (const _ in object) {
-                    const nextLine = ` ${_}: ${object[_]}`;
-                    stringToDisplay += '\n' + nextLine;
-                }
-                alert(stringToDisplay);
-            };
+      const displayEntriesHandler = (
+        message = "All entries",
+        object = userEntries
+      ) => {
+        debugger;
+        const starter = message + ":";
+        let stringToDisplay = starter;
+        for (const key in object) {
+          const nextLine = ` ${key}: ${object[key]}`;
+          stringToDisplay += "\n" + nextLine;
+        }
+        alert(stringToDisplay);
+      };
 
-            const resetHandler = () => {
-                debugger;
-                userEntries = _;
-                displayEntriesHandler();
-            };
+      const resetHandler = () => {
+        debugger;
+        userEntries = {};
+        displayEntriesHandler("Entries reset", userEntries);
+      };
 
-            const writeEntryHandler = () => {
-                debugger;
-                const key = prompt(_);
-                if (_) {
-                    return;
-                }
+      const writeEntryHandler = () => {
+        debugger;
+        const key = prompt("Enter a key:");
+        if (key === null || key.trim() === "") {
+          return;
+        }
 
-                const newValue = prompt(_);
-                if (_) {
-                    return;
-                }
+        const newValue = prompt("Enter a value:");
+        if (newValue === null) {
+          return;
+        }
 
-                _[_] = _;
+        userEntries[key] = newValue;
 
-                displayEntriesHandler();
-            };
+        displayEntriesHandler("All Entries", userEntries);
+      };
 
-            const deleteEntryHandler = () => {
-                debugger;
-                const userKey = prompt(_);
-                if (userKey === null) {
-                    return;
-                }
+      const deleteEntryHandler = () => {
+        debugger;
+        const userKey = prompt("Enter a key to delete:");
+        if (userKey === null) {
+          return;
+        }
 
-                let keyExists = false;
-                for (const _ in _) {
-                    if (_ === _) {
-                        keyExists = true;
-                        break;
-                    }
-                }
+        let keyExists = false;
+        for (const key in userEntries) {
+          if (key === userKey) {
+            keyExists = true;
+            break;
+          }
+        }
 
-                if (keyExists) {
-                    delete userEntries[_];
-                    _();
-                } else {
-                    alert(_);
-                }
-            };
+        if (keyExists) {
+          delete userEntries[userKey];
+          displayEntriesHandler(`Deleted "${userKey}"`, userEntries);
+        } else {
+          alert(`Key "${userKey}" not found.`);
+        }
+      };
 
-            const findKeyHandler = () => {
-                debugger;
-                const userKey = prompt(_);
-                if (userKey === null) {
-                    return;
-                }
+      const findKeyHandler = () => {
+        debugger;
+        const userKey = prompt("Enter a key to find:");
+        if (userKey === null) {
+          return;
+        }
 
-                let keyExists = false;
-                for (const _ in _) {
-                    if (_ === _) {
-                        keyExists = true;
-                        break;
-                    }
-                }
+        let keyExists = false;
+        for (const key in userEntries) {
+          if (key === userKey) {
+            keyExists = true;
+            break;
+          }
+        }
 
-                if (_) {
-                    const foundEntry = _;
-                    alert(foundEntry);
-                } else {
-                    alert(_);
-                }
-            };
+        if (keyExists) {
+          const foundEntry = `${userKey}: ${userEntries[userKey]}`;
+          alert(foundEntry);
+        } else {
+          alert(`Key "${userKey}" not found.`);
+        }
+      };
 
-            const searchValuesHandler = () => {
-                debugger;
-                const query = prompt(_);
-                if (query === null) {
-                    return;
-                }
+      const searchValuesHandler = () => {
+        debugger;
+        const query = prompt("Search for value including:");
+        if (query === null) {
+          return;
+        }
 
-                let searchResults = {};
-                for (const _ in _) {
-                    const value = _[key];
-                    const matchesQuery = _; // does the string value include the query?
-                    if (matchesQuery) {
-                        _ = value;
-                    }
-                }
+        let searchResults = {};
+        for (const key in userEntries) {
+          const value = userEntries[key];
+          const matchesQuery = value.includes(query); // does the string value include the query?
+          if (matchesQuery) {
+            searchResults[key] = value;
+          }
+        }
 
-                displayEntriesHandler(_, _);
-            };
-        </script>
+        displayEntriesHandler(`Values containing "${query}"`, searchResults);
+      };
+    </script>
 
-        <script id="listeners">
-            debugger; // main entry point
+    <script id="listeners">
+      debugger; // main entry point
 
-            // this code works!
-            document
-                .getElementById('write')
-                .addEventListener('click', writeEntryHandler);
-            document
-                .getElementById('delete')
-                .addEventListener('click', deleteEntryHandler);
-            document
-                .getElementById('search')
-                .addEventListener('click', searchValuesHandler);
-            document
-                .getElementById('find')
-                .addEventListener('click', findKeyHandler);
-            document
-                .getElementById('display')
-                .addEventListener('click', displayEntriesHandler);
-            document
-                .getElementById('reset')
-                .addEventListener('click', resetHandler);
-        </script>
-    </body>
+      // this code works!
+      document
+        .getElementById("write")
+        .addEventListener("click", writeEntryHandler);
+      document
+        .getElementById("delete")
+        .addEventListener("click", deleteEntryHandler);
+      document
+        .getElementById("search")
+        .addEventListener("click", searchValuesHandler);
+      document.getElementById("find").addEventListener("click", findKeyHandler);
+      document
+        .getElementById("display")
+        .addEventListener("click", () =>
+          displayEntriesHandler("All Entries", userEntries)
+        );
+      document.getElementById("reset").addEventListener("click", resetHandler);
+    </script>
+  </body>
 </html>

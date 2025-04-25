@@ -1,161 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>So Many Numbers</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>So Many Numbers</title>
 
-        <style>
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-            }
-        </style>
-    </head>
+    <style>
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    </style>
+  </head>
 
-    <body>
-        <main id="user-interface" class="centered">
-            <button id="greater-than">how many greater than X</button>
-            <br />
-            <button id="less-than">how many less than X</button> <br />
-            <button id="divisible-by">how many divisible by X</button>
-            <br />
-            <br />
-            <button id="display">display numbers</button> <br />
-            <button id="reset">reset numbers</button>
-        </main>
+  <body>
+    <main id="user-interface" class="centered">
+      <button id="greater-than">how many greater than X</button>
+      <br />
+      <button id="less-than">how many less than X</button> <br />
+      <button id="divisible-by">how many divisible by X</button>
+      <br />
+      <br />
+      <button id="display">display numbers</button> <br />
+      <button id="reset">reset numbers</button>
+    </main>
 
-        <script id="data">
-            let numbers = [0, 1, 2, 3, 4];
-        </script>
+    <script id="data">
+      let numbers = [0, 1, 2, 3, 4];
+    </script>
 
-        <script id="handlers">
-            'use strict';
-            /* Study the demo for this exercise then fill in the blanks
-        the goal is to exactly recreate the behavior of the demo
-        hint: use ctr-f to find all of the blanks _
-      */
+    <script id="handlers">
+      "use strict";
+      /* Study the demo for this exercise then fill in the blanks
+              the goal is to exactly recreate the behavior of the demo
+              hint: use ctr-f to find all of the blanks _
+            */
 
-            // 1. A user can see all numbers listed in an alert
-            const displayNumbersHandler = (
-                arrayOfNumbers = numbers,
-                message = _,
-            ) => {
-                debugger;
-                const joinNumbers = (acc, next) => _;
-                const allNumbersListed = arrayOfNumbers._(joinNumbers, _);
-                alert(`${message}: ${allNumbersListed}`);
-            };
+      // 1. A user can see all numbers listed in an alert
+      const displayNumbersHandler = (
+        arrayOfNumbers = numbers,
+        message = "numbers"
+      ) => {
+        debugger;
+        if (arrayOfNumbers.length === 0) {
+          alert(`${message}: (no numbers to display)`);
+          return;
+        }
+        const allNumbersListed = arrayOfNumbers.join(", ");
+        alert(`${message}: ${allNumbersListed}`);
+      };
 
-            // 2. A user can fill the array with as many numbers as they like
-            //  (beginning with zero, ending with userNumber - 1)
-            const resetNumbersHandler = () => {
-                debugger;
-                const userInput = prompt(_);
-                if (_) {
-                    return;
-                }
+      // 2. A user can fill the array with as many numbers as they like
+      //  (beginning with zero, ending with userNumber - 1)
+      const resetNumbersHandler = () => {
+        debugger;
+        const userInput = prompt(
+          "Enter a number to generate numbers from 0 to that number - 1"
+        );
+        if (userInput === null) {
+          return;
+        }
 
-                const userNumber = Number(userInput);
-                if (_) {
-                    alert(_);
-                    return;
-                }
+        const userNumber = Number(userInput);
+        if (isNaN(userNumber) || userNumber < 0) {
+          alert("Please enter a valid non-negative number.");
+          return;
+        }
 
-                // a basic for loop, not for ... of
-                numbers = [];
-                for (_; _; _) {
-                    numbers._(_);
-                }
+        // a basic for loop, not for ... of
+        numbers = [];
+        for (let i = 0; i < userNumber; i++) {
+          numbers.push(i);
+        }
 
-                displayNumbersHandler(); // no arguments! this is correct like it is
-            };
+        displayNumbersHandler(); // no arguments! this is correct like it is
+      };
 
-            // 3. A user can see a list of all numbers greater than their input
-            const greaterThanHandler = () => {
-                debugger;
-                const userInput = prompt(_);
-                if (_) {
-                    return;
-                }
+      // 3. A user can see a list of all numbers greater than their input
+      const greaterThanHandler = () => {
+        debugger;
+        const userInput = prompt(
+          "Enter a number to find values greater than it:"
+        );
+        if (userInput === null) {
+          return;
+        }
 
-                const userNumber = _;
-                if (_) {
-                    alert(_);
-                    return;
-                }
+        const userNumber = Number(userInput);
+        if (isNaN(userNumber)) {
+          alert("Please enter a valid number.");
+          return;
+        }
 
-                const numbersGreaterThan = numbers._(_);
-                const howMany = numbersGreaterThan.length;
-                const newMessage = _;
+        const numbersGreaterThan = numbers.filter((n) => n > userNumber);
+        const howMany = numbersGreaterThan.length;
+        const newMessage = `There are ${howMany} numbers greater than ${userNumber}`;
 
-                _(numbersGreaterThan, newMessage);
-            };
+        displayNumbersHandler(numbersGreaterThan, newMessage);
+      };
 
-            // 4. A user can see a list of all numbers less than their input
-            const lessThanHandler = () => {
-                debugger;
-                const userInput = _;
-                if (_) {
-                    return;
-                }
+      // 4. A user can see a list of all numbers less than their input
+      const lessThanHandler = () => {
+        debugger;
+        const userInput = prompt("Enter a number to find values less than it:");
+        if (userInput === null) {
+          return;
+        }
 
-                const userNumber = _;
-                if (_) {
-                    _;
-                    return;
-                }
+        const userNumber = Number(userInput);
+        if (isNaN(userNumber)) {
+          alert("Please enter a valid number.");
+          return;
+        }
 
-                const numbersLessThan = numbers._(_);
-                const howMany = numbersLessThan.length;
-                const newMessage = _;
+        const numbersLessThan = numbers.filter((n) => n < userNumber);
+        const howMany = numbersLessThan.length;
+        const newMessage = `There are ${howMany} numbers less than ${userNumber}`;
 
-                _(numbersLessThan, newMessage);
-            };
+        displayNumbersHandler(numbersLessThan, newMessage);
+      };
 
-            // 5. A user can see a list of all numbers divisible by their input
-            const divisibleByHandler = () => {
-                debugger;
-                const userInput = _;
-                if (_) {
-                    return;
-                }
+      // 5. A user can see a list of all numbers divisible by their input
+      const divisibleByHandler = () => {
+        debugger;
+        const userInput = prompt(
+          "Enter a number to find values divisible by it:"
+        );
+        if (userInput === null) {
+          return;
+        }
 
-                const userNumber = _;
-                if (_) {
-                    alert(_);
-                    return;
-                }
+        const userNumber = Number(userInput);
+        if (isNaN(userNumber) || userNumber === 0) {
+          alert("Please enter a valid number that is not zero.");
+          return;
+        }
 
-                const numbersDivisible = _;
-                const howMany = numbersDivisible.length;
-                const newMessage = _;
+        const numbersDivisible = numbers.filter((n) => n % userNumber === 0);
+        const howMany = numbersDivisible.length;
+        const newMessage = `There are ${howMany} numbers divisible by ${userNumber}`;
 
-                _(numbersDivisible, newMessage);
-            };
-        </script>
+        displayNumbersHandler(numbersDivisible, newMessage);
+      };
+    </script>
 
-        <script id="listeners">
-            debugger; // main entry point
+    <script id="listeners">
+      debugger; // main entry point
 
-            // this code works!
-            document
-                .getElementById('greater-than')
-                .addEventListener('click', greaterThanHandler);
-            document
-                .getElementById('less-than')
-                .addEventListener('click', lessThanHandler);
-            document
-                .getElementById('divisible-by')
-                .addEventListener('click', divisibleByHandler);
-            document
-                .getElementById('display')
-                .addEventListener('click', displayNumbersHandler);
-            document
-                .getElementById('reset')
-                .addEventListener('click', resetNumbersHandler);
-        </script>
-    </body>
+      // this code works!
+      document
+        .getElementById("greater-than")
+        .addEventListener("click", greaterThanHandler);
+      document
+        .getElementById("less-than")
+        .addEventListener("click", lessThanHandler);
+      document
+        .getElementById("divisible-by")
+        .addEventListener("click", divisibleByHandler);
+      document
+        .getElementById("display")
+        .addEventListener("click", displayNumbersHandler);
+      document
+        .getElementById("reset")
+        .addEventListener("click", resetNumbersHandler);
+    </script>
+  </body>
 </html>
