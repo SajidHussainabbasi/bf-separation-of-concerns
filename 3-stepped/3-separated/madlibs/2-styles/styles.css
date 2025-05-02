@@ -1,25 +1,28 @@
 .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .vertical {
-    display: flex;
-    flex-direction: column;
-    /* keep it centered */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-input {
-    width: 15em;
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  font-size: 1rem;
 }
 
 .fancy-text {
-    font-family: fantasy;
-    font-style: italic;
-    color: darkred;
-    border: double darkred;
-    padding: 8px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #f30808;
+  white-space: pre-wrap;
 }

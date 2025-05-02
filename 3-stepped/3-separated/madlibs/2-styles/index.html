@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Mad Libs</title>
-        <meta charset="utf-8" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mad Libs Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="user-interface" class="centered">
+      <form class="vertical">
+        <input type="text" name="noun" placeholder="enter a noun" />
+        <input type="text" name="verb" placeholder="enter a verb" />
+        <input type="text" name="adjective" placeholder="enter an adjective" />
+        <input type="text" name="adverb" placeholder="enter an adverb" />
+        <input type="button" value="be funny" id="generate-btn" />
+      </form>
+      <pre id="output" class="fancy-text"></pre>
+    </section>
 
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-
-    <body>
-        <section class="centered" id="user-interface">
-            <form class="vertical">
-                <input name="noun" type="text" placeholder="enter a noun" />
-                <input name="verb" type="text" placeholder="enter a verb" />
-                <input
-                    name="adjective"
-                    type="text"
-                    placeholder="enter an adjective"
-                />
-                <input
-                    name="adverb"
-                    type="text"
-                    placeholder="enter an adverb"
-                />
-                <input id="user-action" type="button" value="be funny" />
-            </form>
-            <pre class="fancy-text">lorum ipsum dori tiorram</pre>
-        </section>
-
-        <script type="module" src="./src/init.js"></script>
-    </body>
+    <script type="module" src="./src/init.js"></script>
+  </body>
 </html>

@@ -1,95 +1,107 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Exercise 2</title>
-        <meta charset="utf-8" />
+  <head>
+    <title>Exercise 2</title>
+    <meta charset="utf-8" />
 
-        <style>
-            .first-class {
-                display: flex;
-                flex-direction: row-reverse;
-                background-color: darkgreen;
-                height: 30vh;
-                width: 60vw;
-            }
+    <style>
+      .first-class {
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: darkgreen;
+        height: 30vh;
+        width: 60vw;
+      }
 
-            .second-class {
-                display: hidden;
-            }
+      .second-class {
+        display: none; /* CORRECTED from display: hidden */
+      }
 
-            .third-class {
-                background-color: black;
-                position: fixed;
-                top: 10vh;
-                left: 10vw;
-            }
-        </style>
-    </head>
+      .third-class {
+        background-color: black;
+        position: fixed;
+        top: 10vh;
+        left: 10vw;
+        color: white; /* so you can see the text on black */
+        padding: 1rem;
+      }
+    </style>
+  </head>
 
-    <body>
-        <section id="user-interface">
-            <div id="_" class="second-class">3</div>
-            <div id="second" class="_-class">_</div>
-            <div id="third" class="first-_">2</div>
-        </section>
+  <body>
+    <section id="user-interface">
+      <div id="first" class="second-class">3</div>
+      <div id="second" class="third-class">1</div>
+      <div id="third" class="first-class">2</div>
+    </section>
 
-        <script id="handlers">
-            'use strict';
+    <script id="handlers">
+      "use strict";
 
-            const firstHandler = (event) => {
-                debugger;
-                console.assert(
-                    event.target.innerHTML === '_',
-                    'first: target.innerHTML',
-                );
-                console.assert(
-                    event.target.nodeName === '_',
-                    'first: target.nodeName',
-                );
-                console.assert(event.target.id === 'first', 'first: target.id');
-                console.assert(event.type === 'click', 'first: event.type');
-            };
+      const firstHandler = (event) => {
+        debugger;
+        console.assert(
+          event.target.innerHTML === "3",
+          "first: target.innerHTML"
+        );
+        console.assert(
+          event.target.nodeName === "DIV",
+          "first: target.nodeName"
+        );
+        console.assert(event.target.id === "first", "first: target.id");
+        console.assert(event.type === "mouseover", "first: event.type");
 
-            const _ = (event) => {
-                debugger;
-                console.assert(event.target.id === '2', 'second: target.id');
-                console.assert(
-                    event.target.className === 'third-class',
-                    '2: target.className',
-                );
-                console.assert(
-                    event.target.innerHTML === '1',
-                    '2: target.innerHTML',
-                );
-                console.assert(event.type === 'mouseover', '2: event.type');
-            };
+        // Extra behavior: Show the hidden div when hovered
+        event.target.style.display = "block";
+        event.target.style.backgroundColor = "gold";
+      };
 
-            const thirdHandler = (event) => {
-                debugger;
-                console.assert(
-                    event.target.className === '_',
-                    'third: target.className',
-                );
-                console.assert(
-                    event.target._ === 'third',
-                    'third: target.className',
-                );
-                console.assert(
-                    event.target.innerHTML === '_',
-                    'third: target.innerHTML',
-                );
-                console.assert(event.type === '_', 'second: event.type');
-            };
-        </script>
+      const secondHandler = (event) => {
+        debugger;
+        console.assert(event.target.id === "second", "second: target.id");
+        console.assert(
+          event.target.className === "third-class",
+          "second: target.className"
+        );
+        console.assert(
+          event.target.innerHTML === "1",
+          "second: target.innerHTML"
+        );
+        console.assert(event.type === "click", "second: event.type");
 
-        <script id="listeners">
-            document
-                .getElementById('first')
-                .addEventListener('mouseover', firstHandler);
-            document
-                .getElementById('second')
-                .addEventListener('_', secondHandler);
-            document.getElementById('_').addEventListener('mouseover', _);
-        </script>
-    </body>
+        // Extra behavior: Change text when clicked
+        event.target.innerHTML = "Clicked!";
+        event.target.style.backgroundColor = "purple";
+      };
+
+      const thirdHandler = (event) => {
+        debugger;
+        console.assert(
+          event.target.className === "first-class",
+          "third: target.className"
+        );
+        console.assert(event.target.id === "third", "third: target.id");
+        console.assert(
+          event.target.innerHTML === "2",
+          "third: target.innerHTML"
+        );
+        console.assert(event.type === "mouseover", "third: event.type");
+
+        // Extra behavior: Change background color when hovered
+        event.target.style.backgroundColor = "darkblue";
+      };
+    </script>
+
+    <script id="listeners">
+      document
+        .getElementById("first")
+        .addEventListener("mouseover", firstHandler);
+      document
+        .getElementById("second")
+        .addEventListener("click", secondHandler);
+      document
+        .getElementById("third")
+        .addEventListener("mouseover", thirdHandler);
+    </script>
+  </body>
 </html>

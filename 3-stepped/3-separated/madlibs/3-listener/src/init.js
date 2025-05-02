@@ -1,1 +1,5 @@
-import './listener.js';
+import { attachListeners } from './listener.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  attachListeners();
+});

@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Magic Variable: `event`</title>
-        <style></style>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Magic Variable: `event`</title>
+    <style>
+      /* optional: add a little styling */
+      #click-it {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-    <body>
-        <section id="user-interface">
-            <button id="click-it">clicky</button>
-        </section>
+  <body>
+    <section id="user-interface">
+      <button id="click-it">clicky</button>
+    </section>
 
-        <script id="data">
-            // what happens if you uncomment this line?
-            // const event = 'hi';
-        </script>
+    <script id="data">
+      // what happens if you uncomment this line?
+      // const event = "hi";
 
-        <script id="handlers">
-            const magicEvent = () => {
-                console.log('magic:', event);
-            };
+      // ✏️ If you uncomment this line, it will override the browser's "event" object,
+      // breaking the `magicEvent` function. `event` will just be the string "hi" instead of the event object.
+    </script>
 
-            const parameterEvent = (event) => {
-                console.log('parameter:', event);
-            };
-        </script>
-        <script id="listeners">
-            document
-                .getElementById('click-it')
-                .addEventListener('click', magicEvent);
+    <script id="handlers">
+      "use strict";
 
-            document
-                .getElementById('click-it')
-                .addEventListener('click', parameterEvent);
-        </script>
-    </body>
+      const magicEvent = () => {
+        // Here, "event" is taken magically from the browser.
+        console.log("magic:", event);
+      };
+
+      const parameterEvent = (event) => {
+        // Here, "event" is passed explicitly into the function.
+        console.log("parameter:", event);
+      };
+    </script>
+
+    <script id="listeners">
+      const button = document.getElementById("click-it");
+
+      // Attach both event listeners to the button
+      button.addEventListener("click", magicEvent);
+      button.addEventListener("click", parameterEvent);
+    </script>
+  </body>
 </html>

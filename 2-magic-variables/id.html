@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Magic Variable: `id`</title>
-        <style></style>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Magic Variable: `id`</title>
+    <style></style>
+  </head>
 
-    <body>
-        <section id="user-interface">
-            <button id="clicky">clicky</button>
-            <button id="click-it">click it</button>
-        </section>
+  <body>
+    <section id="user-interface">
+      <button id="clicky">clicky</button>
+      <button id="click-it">click it</button>
+    </section>
 
-        <script id="demo">
-            const clickyButton = document.getElementById('clicky');
-            const clickItButton = document.getElementById('click-it');
+    <script id="demo">
+      "use strict"; // Good practice to write strict JavaScript!
 
-            // these two variables are safe and clear to understand
-            //  they are declared locally and do not rely on global magic
-            console.log(clickyButton);
-            console.log(clickItButton);
+      const clickyButton = document.getElementById("clicky");
+      const clickItButton = document.getElementById("click-it");
 
-            // what happens if you uncomment this line?
-            // const clicky = 'hi';
+      // these two variables are safe and clear to understand
+      // they are declared locally and do not rely on global magic
+      console.log("clickyButton:", clickyButton);
+      console.log("clickItButton:", clickItButton);
 
-            // or this line?
-            // window['click-it'] = 'bye';
+      // what happens if you uncomment this line?
+      // const clicky = 'hi';
 
-            console.log(clicky);
-            console.log(window['click-it']);
-        </script>
-    </body>
+      // or this line?
+      // window['click-it'] = 'bye';
+
+      // These two console.logs:
+      console.log(
+        "clicky:",
+        typeof clicky !== "undefined" ? clicky : "not available"
+      );
+      console.log("click-it:", window["click-it"] ?? "not available");
+    </script>
+  </body>
 </html>

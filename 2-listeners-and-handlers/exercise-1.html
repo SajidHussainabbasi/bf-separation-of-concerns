@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Exercise 1</title>
-        <meta charset="utf-8" />
+  <head>
+    <title>Exercise 1</title>
+    <meta charset="utf-8" />
 
-        <style>
-            .secret {
-                display: hidden;
-            }
-        </style>
-    </head>
+    <style>
+      .secret {
+        display: none; /* corrected from "hidde" to "none" */
+      }
+    </style>
+  </head>
 
-    <body>
-        <section id="user-interface">
-            <button id="hi" class="secret">catch me if you can!</button>
-        </section>
+  <body>
+    <section id="user-interface">
+      <button id="hi" class="secret">catch me if you can!</button>
+    </section>
 
-        <script id="handlers">
-            'use strict';
+    <script id="handlers">
+      "use strict";
 
-            const handler = (event) => {
-                debugger;
-                console.assert(
-                    event.target.innerHTML === '_',
-                    'event.target.innerHTML',
-                );
-                console.assert(
-                    event.target.nodeName === '_',
-                    'event.target.nodeName',
-                );
-                console.assert(event.target.id === 'hi', 'event.target.id');
-                console.assert(
-                    event.target.className === 'secret',
-                    'event.target._',
-                );
-                console.assert(event.type === 'click', 'event.type');
-            };
-        </script>
+      const handler = (event) => {
+        debugger;
+        console.assert(
+          event.target.innerHTML === "catch me if you can!",
+          "event.target.innerHTML"
+        );
+        console.assert(
+          event.target.nodeName === "BUTTON",
+          "event.target.nodeName"
+        );
+        console.assert(event.target.id === "hi", "event.target.id");
+        console.assert(
+          event.target.className === "secret",
+          "event.target.className"
+        );
+        console.assert(event.type === "click", "event.type");
 
-        <script id="listeners">
-            document.getElementById('_').addEventListener('_', _);
-        </script>
-    </body>
+        // Extra behavior: after clicking, hide the button again
+        event.target.style.display = "none";
+      };
+    </script>
+
+    <script id="listeners">
+      document.getElementById("hi").addEventListener("click", handler);
+
+      // Show the hidden button after 1 second
+      setTimeout(() => {
+        document.getElementById("hi").style.display = "inline-block";
+      }, 1000);
+    </script>
+  </body>
 </html>

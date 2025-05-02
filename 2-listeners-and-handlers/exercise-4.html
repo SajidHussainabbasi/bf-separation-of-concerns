@@ -1,83 +1,113 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Listeners & Handlers 4</title>
-        <meta charset="utf-8" />
+  <head>
+    <title>Listeners & Handlers 4</title>
+    <meta charset="utf-8" />
+    <style>
+      .output {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: monospace;
+        font-size: 2em;
+        text-align: center;
+      }
+      .inputs {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
 
-        <style>
-            .output {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-family: monospace;
-                font-size: 2em;
+  <body>
+    <section id="user-interface">
+      <form class="inputs" id="inputs">
+        <input name="value" id="value-input" type="text" />
+        <select name="type" id="selector">
+          <option value="string">string</option>
+          <option value="number">number</option>
+          <option value="boolean">boolean</option>
+          <option value="undefined">undefined</option>
+        </select>
+        <input type="button" id="user-action" value="Convert" />
+      </form>
+    </section>
+
+    <div class="output" id="output">Result will appear here</div>
+
+    <script id="handlers">
+      "use strict";
+
+      const first = (event) => {
+        console.assert(event.type === "click", "first, event.type");
+        console.assert(
+          event.target.id === "user-action",
+          "first, event.target.id"
+        );
+        console.assert(
+          event.target.value === "Convert",
+          "first, event.target.value"
+        );
+        console.assert(
+          event.target.nodeName === "INPUT",
+          "first, event.target.nodeName"
+        );
+        console.assert(
+          event.target.form.id === "inputs",
+          "first, event.target.form.id"
+        );
+
+        // Read the form inputs
+        const form = event.target.form;
+        const userInput = form.elements["value"].value;
+        const typeSelected = form.elements["type"].value;
+
+        let convertedValue;
+        switch (typeSelected) {
+          case "string":
+            convertedValue = String(userInput);
+            break;
+          case "number":
+            convertedValue = Number(userInput);
+            break;
+          case "boolean":
+            if (userInput.toLowerCase() === "true") {
+              convertedValue = true;
+            } else if (userInput.toLowerCase() === "false") {
+              convertedValue = false;
+            } else {
+              convertedValue = Boolean(userInput);
             }
+            break;
+          case "undefined":
+            convertedValue = undefined;
+            break;
+          default:
+            convertedValue = userInput;
+        }
 
-            .inputs {
-                display: flex;
-                flex-direction: column;
-            }
-        </style>
-    </head>
+        // Show the converted value
+        const output = document.getElementById("output");
+        output.textContent = `(${typeSelected}) ${convertedValue}`;
+      };
 
-    <body>
-        <section id="user-interface">
-            <form class="inputs" id="inputs">
-                <input name="value" type="text" />
-                <select name="type" id="_">
-                    <option value="string">string</option>
-                    <option value="number">number</option>
-                    <option value="boolean">boolean</option>
-                    <option value="undefined">undefined</option>
-                </select>
-                <input type="button" id="user-action" value="a button" />
-            </form>
-        </section>
+      const second = (event) => {
+        console.assert(event.type === "change", "second, event.type");
+        console.assert(
+          event.target.id === "selector",
+          "second, event.target.id"
+        );
+        console.assert(
+          event.target.nodeName === "SELECT",
+          "second, event.target.nodeName"
+        );
+      };
+    </script>
 
-        <script id="handlers">
-            'use strict';
-
-            const _ = (event) => {
-                debugger;
-                console.assert(event.type === 'click', 'first, event.type');
-                console.assert(
-                    event.target.id === 'user-action',
-                    'first, event.target.id',
-                );
-                console.assert(
-                    event.target.value === 'a button',
-                    'first, event.target.value',
-                );
-                console.assert(
-                    event.target.nodeName === 'INPUT',
-                    'first, event.target.nodeName',
-                );
-                console.assert(
-                    event.target.form.id === 'inputs',
-                    'first, event.target.form.id',
-                );
-            };
-
-            const second = (event) => {
-                debugger;
-                console.assert(event.type === '_', 'second, event.type');
-                console.assert(
-                    event.target.id === 'selector',
-                    'second, event.target.id',
-                );
-                console.assert(
-                    event.target.nodeName === 'SELECT',
-                    'second, event.target.id',
-                );
-            };
-        </script>
-
-        <script id="listeners">
-            document.getElementById('_').addEventListener('click', first);
-            document
-                .getElementById('selector')
-                .addEventListener('change', second);
-        </script>
-    </body>
+    <script id="listeners">
+      document.getElementById("user-action").addEventListener("click", first);
+      document.getElementById("selector").addEventListener("change", second);
+    </script>
+  </body>
 </html>

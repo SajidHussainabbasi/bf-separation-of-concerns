@@ -1,3 +1,6 @@
-document.getElementById('user-action').addEventListener('click', (event) => {
-    console.log(event);
-});
+import { handleMadLib } from './handler.js';
+
+export function attachListeners() {
+  const button = document.getElementById('user-action');
+  button.addEventListener('click', handleMadLib);
+}

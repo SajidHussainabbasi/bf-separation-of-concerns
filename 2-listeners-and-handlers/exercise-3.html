@@ -1,95 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Exercise 3</title>
-        <meta charset="utf-8" />
+  <head>
+    <title>Exercise 3</title>
+    <meta charset="utf-8" />
+    <style>
+      .inputs {
+        display: flex;
+        flex-direction: column;
+      }
+      .output {
+        font-family: monospace;
+        font-size: 2em;
+        text-align: center;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
 
-        <style>
-            .inputs {
-                display: flex;
-                flex-direction: column;
-            }
-        </style>
-    </head>
+  <body>
+    <section id="user-interface">
+      <form class="inputs" id="inputs">
+        <select name="type" id="selector">
+          <option value="rock">rock</option>
+          <option value="paper">paper</option>
+          <option value="scissors">scissors</option>
+        </select>
+        <input type="button" id="user-action" name="clickable" value="Play!" />
+      </form>
+    </section>
 
-    <body>
-        <section id="user-interface">
-            <form class="inputs" id="inputs">
-                <select name="_" id="selector">
-                    <option value="rock">rock</option>
-                    <option value="paper">paper</option>
-                    <option value="scissors">scissors</option>
-                </select>
-                <input type="button" id="_" name="clickable" value="a button" />
-            </form>
-        </section>
+    <div id="output" class="output">Make your move!</div>
 
-        <script id="handlers">
-            'use strict';
+    <script id="handlers">
+      "use strict";
 
-            const first = (event) => {
-                debugger;
-                console.assert(
-                    event.target._ === 'selector',
-                    'first: target.id',
-                );
-                console.assert(
-                    event.target.nodeName === 'SELECT',
-                    'first: target.nodeName',
-                );
-                console.assert(
-                    event.target.form.id === 'inputs',
-                    'first: target.form.id',
-                );
-                console.assert(
-                    event.target.childElementCount === _,
-                    'third: target.childElementCount',
-                );
-            };
+      let userChoice = "rock"; // default starting choice
 
-            const second = (event) => {
-                debugger;
-                console.assert(event._ === 'blur', 'second: event.type');
-                console.assert(
-                    event.target.id === 'selector',
-                    'second: target.id',
-                );
-                console.assert(
-                    event.target.nodeName === '_',
-                    'second: target.nodeName',
-                );
-                console.assert(
-                    event.target.name === 'type',
-                    'second: target.name',
-                );
-                console.assert(
-                    (event.target.form.clickable.value = 'a button'),
-                    'second: target.form.clickable.value',
-                );
-            };
+      const first = (event) => {
+        console.assert(event.target.id === "selector", "first: target.id");
+        console.assert(
+          event.target.nodeName === "SELECT",
+          "first: target.nodeName"
+        );
+        console.assert(
+          event.target.form.id === "inputs",
+          "first: target.form.id"
+        );
+        console.assert(
+          event.target.childElementCount === 3,
+          "first: target.childElementCount"
+        );
+        userChoice = event.target.value;
+      };
 
-            const third = (event) => {
-                debugger;
-                console.assert(event.type === 'click', 'third: event.type');
-                console.assert(
-                    event.target.id === 'user-action',
-                    'third: target.id',
-                );
-                console.assert(
-                    event.target.name === 'clickable',
-                    'third: target.name',
-                );
-                console.assert(
-                    event.target.nodeName === '_',
-                    'third: target.nodeName',
-                );
-            };
-        </script>
+      const second = (event) => {
+        console.assert(event.type === "blur", "second: event.type");
+        console.assert(event.target.id === "selector", "second: target.id");
+        console.assert(
+          event.target.nodeName === "SELECT",
+          "second: target.nodeName"
+        );
+        console.assert(event.target.name === "type", "second: target.name");
+        console.assert(
+          event.target.form.clickable.value === "Play!",
+          "second: target.form.clickable.value"
+        );
+      };
 
-        <script id="listeners">
-            document.getElementById('_').addEventListener('change', _);
-            document.getElementById('_').addEventListener('blur', _);
-            document.getElementById('_').addEventListener('click', _);
-        </script>
-    </body>
+      const third = (event) => {
+        console.assert(event.type === "click", "third: event.type");
+        console.assert(event.target.id === "user-action", "third: target.id");
+        console.assert(event.target.name === "clickable", "third: target.name");
+        console.assert(
+          event.target.nodeName === "INPUT",
+          "third: target.nodeName"
+        );
+
+        const choices = ["rock", "paper", "scissors"];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+        let result = "";
+
+        if (userChoice === computerChoice) {
+          result = "It's a tie!";
+        } else if (
+          (userChoice === "rock" && computerChoice === "scissors") ||
+          (userChoice === "paper" && computerChoice === "rock") ||
+          (userChoice === "scissors" && computerChoice === "paper")
+        ) {
+          result = "You win!";
+        } else {
+          result = "Computer wins!";
+        }
+
+        document.getElementById(
+          "output"
+        ).textContent = `You chose ${userChoice}, computer chose ${computerChoice}. ${result}`;
+      };
+    </script>
+
+    <script id="listeners">
+      document.getElementById("selector").addEventListener("change", first);
+      document.getElementById("selector").addEventListener("blur", second);
+      document.getElementById("user-action").addEventListener("click", third);
+    </script>
+  </body>
 </html>
